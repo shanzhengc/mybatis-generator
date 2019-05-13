@@ -1,0 +1,2116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuyescm.erp.mapper.ErpJindieOrderItemsEntityMapper">
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="products_extendid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="qty" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="warehouse_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="batch_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="product_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="expiry_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="shelflife_day" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="order_items_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="owner_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="inventory_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="inventory_status" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="sales_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="tax_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="sales_money" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="source_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="source_line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, tenant_id, line, products_extendid, qty, warehouse_no, batch_code, 
+    product_time, expiry_time, shelflife_day, order_items_remark, owner_code, inventory_type, 
+    inventory_status, sales_price, tax_rate, sales_money, source_no, source_line, cre_person_id, 
+    cre_person, cre_time, mod_person_id, mod_person, mod_time, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items (id, order_no, tenant_id, 
+      line, products_extendid, qty, 
+      warehouse_no, batch_code, product_time, 
+      expiry_time, shelflife_day, order_items_remark, 
+      owner_code, inventory_type, inventory_status, 
+      sales_price, tax_rate, sales_money, 
+      source_no, source_line, cre_person_id, 
+      cre_person, cre_time, mod_person_id, 
+      mod_person, mod_time, version
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{tenantId,jdbcType=BIGINT}, 
+      #{line,jdbcType=SMALLINT}, #{productsExtendid,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, 
+      #{warehouseNo,jdbcType=VARCHAR}, #{batchCode,jdbcType=VARCHAR}, #{productTime,jdbcType=TIMESTAMP}, 
+      #{expiryTime,jdbcType=TIMESTAMP}, #{shelflifeDay,jdbcType=SMALLINT}, #{orderItemsRemark,jdbcType=VARCHAR}, 
+      #{ownerCode,jdbcType=VARCHAR}, #{inventoryType,jdbcType=CHAR}, #{inventoryStatus,jdbcType=CHAR}, 
+      #{salesPrice,jdbcType=DECIMAL}, #{taxRate,jdbcType=DECIMAL}, #{salesMoney,jdbcType=DECIMAL}, 
+      #{sourceNo,jdbcType=VARCHAR}, #{sourceLine,jdbcType=SMALLINT}, #{crePersonId,jdbcType=VARCHAR}, 
+      #{crePerson,jdbcType=VARCHAR}, #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, 
+      #{modPerson,jdbcType=VARCHAR}, #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="line != null">
+        line,
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no,
+      </if>
+      <if test="batchCode != null">
+        batch_code,
+      </if>
+      <if test="productTime != null">
+        product_time,
+      </if>
+      <if test="expiryTime != null">
+        expiry_time,
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day,
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark,
+      </if>
+      <if test="ownerCode != null">
+        owner_code,
+      </if>
+      <if test="inventoryType != null">
+        inventory_type,
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="taxRate != null">
+        tax_rate,
+      </if>
+      <if test="salesMoney != null">
+        sales_money,
+      </if>
+      <if test="sourceNo != null">
+        source_no,
+      </if>
+      <if test="sourceLine != null">
+        source_line,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        line = #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        batch_code = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        product_time = #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        owner_code = #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        inventory_type = #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        sales_price = #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        tax_rate = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        sales_money = #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        source_no = #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        source_line = #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=BIGINT},
+      line = #{line,jdbcType=SMALLINT},
+      products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=DECIMAL},
+      warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      batch_code = #{batchCode,jdbcType=VARCHAR},
+      product_time = #{productTime,jdbcType=TIMESTAMP},
+      expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      owner_code = #{ownerCode,jdbcType=VARCHAR},
+      inventory_type = #{inventoryType,jdbcType=CHAR},
+      inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      sales_price = #{salesPrice,jdbcType=DECIMAL},
+      tax_rate = #{taxRate,jdbcType=DECIMAL},
+      sales_money = #{salesMoney,jdbcType=DECIMAL},
+      source_no = #{sourceNo,jdbcType=VARCHAR},
+      source_line = #{sourceLine,jdbcType=SMALLINT},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="products_extendid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="qty" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="warehouse_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="batch_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="product_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="expiry_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="shelflife_day" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="order_items_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="owner_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="inventory_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="inventory_status" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="sales_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="tax_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="sales_money" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="source_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="source_line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, tenant_id, line, products_extendid, qty, warehouse_no, batch_code, 
+    product_time, expiry_time, shelflife_day, order_items_remark, owner_code, inventory_type, 
+    inventory_status, sales_price, tax_rate, sales_money, source_no, source_line, cre_person_id, 
+    cre_person, cre_time, mod_person_id, mod_person, mod_time, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items (id, order_no, tenant_id, 
+      line, products_extendid, qty, 
+      warehouse_no, batch_code, product_time, 
+      expiry_time, shelflife_day, order_items_remark, 
+      owner_code, inventory_type, inventory_status, 
+      sales_price, tax_rate, sales_money, 
+      source_no, source_line, cre_person_id, 
+      cre_person, cre_time, mod_person_id, 
+      mod_person, mod_time, version
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{tenantId,jdbcType=BIGINT}, 
+      #{line,jdbcType=SMALLINT}, #{productsExtendid,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, 
+      #{warehouseNo,jdbcType=VARCHAR}, #{batchCode,jdbcType=VARCHAR}, #{productTime,jdbcType=TIMESTAMP}, 
+      #{expiryTime,jdbcType=TIMESTAMP}, #{shelflifeDay,jdbcType=SMALLINT}, #{orderItemsRemark,jdbcType=VARCHAR}, 
+      #{ownerCode,jdbcType=VARCHAR}, #{inventoryType,jdbcType=CHAR}, #{inventoryStatus,jdbcType=CHAR}, 
+      #{salesPrice,jdbcType=DECIMAL}, #{taxRate,jdbcType=DECIMAL}, #{salesMoney,jdbcType=DECIMAL}, 
+      #{sourceNo,jdbcType=VARCHAR}, #{sourceLine,jdbcType=SMALLINT}, #{crePersonId,jdbcType=VARCHAR}, 
+      #{crePerson,jdbcType=VARCHAR}, #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, 
+      #{modPerson,jdbcType=VARCHAR}, #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="line != null">
+        line,
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no,
+      </if>
+      <if test="batchCode != null">
+        batch_code,
+      </if>
+      <if test="productTime != null">
+        product_time,
+      </if>
+      <if test="expiryTime != null">
+        expiry_time,
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day,
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark,
+      </if>
+      <if test="ownerCode != null">
+        owner_code,
+      </if>
+      <if test="inventoryType != null">
+        inventory_type,
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="taxRate != null">
+        tax_rate,
+      </if>
+      <if test="salesMoney != null">
+        sales_money,
+      </if>
+      <if test="sourceNo != null">
+        source_no,
+      </if>
+      <if test="sourceLine != null">
+        source_line,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        line = #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        batch_code = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        product_time = #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        owner_code = #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        inventory_type = #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        sales_price = #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        tax_rate = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        sales_money = #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        source_no = #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        source_line = #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=BIGINT},
+      line = #{line,jdbcType=SMALLINT},
+      products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=DECIMAL},
+      warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      batch_code = #{batchCode,jdbcType=VARCHAR},
+      product_time = #{productTime,jdbcType=TIMESTAMP},
+      expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      owner_code = #{ownerCode,jdbcType=VARCHAR},
+      inventory_type = #{inventoryType,jdbcType=CHAR},
+      inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      sales_price = #{salesPrice,jdbcType=DECIMAL},
+      tax_rate = #{taxRate,jdbcType=DECIMAL},
+      sales_money = #{salesMoney,jdbcType=DECIMAL},
+      source_no = #{sourceNo,jdbcType=VARCHAR},
+      source_line = #{sourceLine,jdbcType=SMALLINT},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="products_extendid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="qty" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="warehouse_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="batch_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="product_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="expiry_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="shelflife_day" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="order_items_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="owner_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="inventory_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="inventory_status" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="sales_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="tax_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="sales_money" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="source_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="source_line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, tenant_id, line, products_extendid, qty, warehouse_no, batch_code, 
+    product_time, expiry_time, shelflife_day, order_items_remark, owner_code, inventory_type, 
+    inventory_status, sales_price, tax_rate, sales_money, source_no, source_line, cre_person_id, 
+    cre_person, cre_time, mod_person_id, mod_person, mod_time, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items (id, order_no, tenant_id, 
+      line, products_extendid, qty, 
+      warehouse_no, batch_code, product_time, 
+      expiry_time, shelflife_day, order_items_remark, 
+      owner_code, inventory_type, inventory_status, 
+      sales_price, tax_rate, sales_money, 
+      source_no, source_line, cre_person_id, 
+      cre_person, cre_time, mod_person_id, 
+      mod_person, mod_time, version
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{tenantId,jdbcType=BIGINT}, 
+      #{line,jdbcType=SMALLINT}, #{productsExtendid,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, 
+      #{warehouseNo,jdbcType=VARCHAR}, #{batchCode,jdbcType=VARCHAR}, #{productTime,jdbcType=TIMESTAMP}, 
+      #{expiryTime,jdbcType=TIMESTAMP}, #{shelflifeDay,jdbcType=SMALLINT}, #{orderItemsRemark,jdbcType=VARCHAR}, 
+      #{ownerCode,jdbcType=VARCHAR}, #{inventoryType,jdbcType=CHAR}, #{inventoryStatus,jdbcType=CHAR}, 
+      #{salesPrice,jdbcType=DECIMAL}, #{taxRate,jdbcType=DECIMAL}, #{salesMoney,jdbcType=DECIMAL}, 
+      #{sourceNo,jdbcType=VARCHAR}, #{sourceLine,jdbcType=SMALLINT}, #{crePersonId,jdbcType=VARCHAR}, 
+      #{crePerson,jdbcType=VARCHAR}, #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, 
+      #{modPerson,jdbcType=VARCHAR}, #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="line != null">
+        line,
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no,
+      </if>
+      <if test="batchCode != null">
+        batch_code,
+      </if>
+      <if test="productTime != null">
+        product_time,
+      </if>
+      <if test="expiryTime != null">
+        expiry_time,
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day,
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark,
+      </if>
+      <if test="ownerCode != null">
+        owner_code,
+      </if>
+      <if test="inventoryType != null">
+        inventory_type,
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="taxRate != null">
+        tax_rate,
+      </if>
+      <if test="salesMoney != null">
+        sales_money,
+      </if>
+      <if test="sourceNo != null">
+        source_no,
+      </if>
+      <if test="sourceLine != null">
+        source_line,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        line = #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        batch_code = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        product_time = #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        owner_code = #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        inventory_type = #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        sales_price = #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        tax_rate = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        sales_money = #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        source_no = #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        source_line = #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=BIGINT},
+      line = #{line,jdbcType=SMALLINT},
+      products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=DECIMAL},
+      warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      batch_code = #{batchCode,jdbcType=VARCHAR},
+      product_time = #{productTime,jdbcType=TIMESTAMP},
+      expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      owner_code = #{ownerCode,jdbcType=VARCHAR},
+      inventory_type = #{inventoryType,jdbcType=CHAR},
+      inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      sales_price = #{salesPrice,jdbcType=DECIMAL},
+      tax_rate = #{taxRate,jdbcType=DECIMAL},
+      sales_money = #{salesMoney,jdbcType=DECIMAL},
+      source_no = #{sourceNo,jdbcType=VARCHAR},
+      source_line = #{sourceLine,jdbcType=SMALLINT},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="products_extendid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="qty" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="warehouse_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="batch_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="product_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="expiry_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="shelflife_day" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="order_items_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="owner_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="inventory_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="inventory_status" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="sales_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="tax_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="sales_money" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="source_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="source_line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, tenant_id, line, products_extendid, qty, warehouse_no, batch_code, 
+    product_time, expiry_time, shelflife_day, order_items_remark, owner_code, inventory_type, 
+    inventory_status, sales_price, tax_rate, sales_money, source_no, source_line, cre_person_id, 
+    cre_person, cre_time, mod_person_id, mod_person, mod_time, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items (id, order_no, tenant_id, 
+      line, products_extendid, qty, 
+      warehouse_no, batch_code, product_time, 
+      expiry_time, shelflife_day, order_items_remark, 
+      owner_code, inventory_type, inventory_status, 
+      sales_price, tax_rate, sales_money, 
+      source_no, source_line, cre_person_id, 
+      cre_person, cre_time, mod_person_id, 
+      mod_person, mod_time, version
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{tenantId,jdbcType=BIGINT}, 
+      #{line,jdbcType=SMALLINT}, #{productsExtendid,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, 
+      #{warehouseNo,jdbcType=VARCHAR}, #{batchCode,jdbcType=VARCHAR}, #{productTime,jdbcType=TIMESTAMP}, 
+      #{expiryTime,jdbcType=TIMESTAMP}, #{shelflifeDay,jdbcType=SMALLINT}, #{orderItemsRemark,jdbcType=VARCHAR}, 
+      #{ownerCode,jdbcType=VARCHAR}, #{inventoryType,jdbcType=CHAR}, #{inventoryStatus,jdbcType=CHAR}, 
+      #{salesPrice,jdbcType=DECIMAL}, #{taxRate,jdbcType=DECIMAL}, #{salesMoney,jdbcType=DECIMAL}, 
+      #{sourceNo,jdbcType=VARCHAR}, #{sourceLine,jdbcType=SMALLINT}, #{crePersonId,jdbcType=VARCHAR}, 
+      #{crePerson,jdbcType=VARCHAR}, #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, 
+      #{modPerson,jdbcType=VARCHAR}, #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="line != null">
+        line,
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no,
+      </if>
+      <if test="batchCode != null">
+        batch_code,
+      </if>
+      <if test="productTime != null">
+        product_time,
+      </if>
+      <if test="expiryTime != null">
+        expiry_time,
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day,
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark,
+      </if>
+      <if test="ownerCode != null">
+        owner_code,
+      </if>
+      <if test="inventoryType != null">
+        inventory_type,
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="taxRate != null">
+        tax_rate,
+      </if>
+      <if test="salesMoney != null">
+        sales_money,
+      </if>
+      <if test="sourceNo != null">
+        source_no,
+      </if>
+      <if test="sourceLine != null">
+        source_line,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        line = #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        batch_code = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        product_time = #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        owner_code = #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        inventory_type = #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        sales_price = #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        tax_rate = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        sales_money = #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        source_no = #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        source_line = #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=BIGINT},
+      line = #{line,jdbcType=SMALLINT},
+      products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=DECIMAL},
+      warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      batch_code = #{batchCode,jdbcType=VARCHAR},
+      product_time = #{productTime,jdbcType=TIMESTAMP},
+      expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      owner_code = #{ownerCode,jdbcType=VARCHAR},
+      inventory_type = #{inventoryType,jdbcType=CHAR},
+      inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      sales_price = #{salesPrice,jdbcType=DECIMAL},
+      tax_rate = #{taxRate,jdbcType=DECIMAL},
+      sales_money = #{salesMoney,jdbcType=DECIMAL},
+      source_no = #{sourceNo,jdbcType=VARCHAR},
+      source_line = #{sourceLine,jdbcType=SMALLINT},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="products_extendid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="qty" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="warehouse_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="batch_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="product_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="expiry_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="shelflife_day" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="order_items_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="owner_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="inventory_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="inventory_status" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="sales_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="tax_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="sales_money" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="source_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="source_line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, tenant_id, line, products_extendid, qty, warehouse_no, batch_code, 
+    product_time, expiry_time, shelflife_day, order_items_remark, owner_code, inventory_type, 
+    inventory_status, sales_price, tax_rate, sales_money, source_no, source_line, cre_person_id, 
+    cre_person, cre_time, mod_person_id, mod_person, mod_time, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items (id, order_no, tenant_id, 
+      line, products_extendid, qty, 
+      warehouse_no, batch_code, product_time, 
+      expiry_time, shelflife_day, order_items_remark, 
+      owner_code, inventory_type, inventory_status, 
+      sales_price, tax_rate, sales_money, 
+      source_no, source_line, cre_person_id, 
+      cre_person, cre_time, mod_person_id, 
+      mod_person, mod_time, version
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{tenantId,jdbcType=BIGINT}, 
+      #{line,jdbcType=SMALLINT}, #{productsExtendid,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, 
+      #{warehouseNo,jdbcType=VARCHAR}, #{batchCode,jdbcType=VARCHAR}, #{productTime,jdbcType=TIMESTAMP}, 
+      #{expiryTime,jdbcType=TIMESTAMP}, #{shelflifeDay,jdbcType=SMALLINT}, #{orderItemsRemark,jdbcType=VARCHAR}, 
+      #{ownerCode,jdbcType=VARCHAR}, #{inventoryType,jdbcType=CHAR}, #{inventoryStatus,jdbcType=CHAR}, 
+      #{salesPrice,jdbcType=DECIMAL}, #{taxRate,jdbcType=DECIMAL}, #{salesMoney,jdbcType=DECIMAL}, 
+      #{sourceNo,jdbcType=VARCHAR}, #{sourceLine,jdbcType=SMALLINT}, #{crePersonId,jdbcType=VARCHAR}, 
+      #{crePerson,jdbcType=VARCHAR}, #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, 
+      #{modPerson,jdbcType=VARCHAR}, #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="line != null">
+        line,
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no,
+      </if>
+      <if test="batchCode != null">
+        batch_code,
+      </if>
+      <if test="productTime != null">
+        product_time,
+      </if>
+      <if test="expiryTime != null">
+        expiry_time,
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day,
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark,
+      </if>
+      <if test="ownerCode != null">
+        owner_code,
+      </if>
+      <if test="inventoryType != null">
+        inventory_type,
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="taxRate != null">
+        tax_rate,
+      </if>
+      <if test="salesMoney != null">
+        sales_money,
+      </if>
+      <if test="sourceNo != null">
+        source_no,
+      </if>
+      <if test="sourceLine != null">
+        source_line,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        line = #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        batch_code = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        product_time = #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        owner_code = #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        inventory_type = #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        sales_price = #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        tax_rate = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        sales_money = #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        source_no = #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        source_line = #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=BIGINT},
+      line = #{line,jdbcType=SMALLINT},
+      products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=DECIMAL},
+      warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      batch_code = #{batchCode,jdbcType=VARCHAR},
+      product_time = #{productTime,jdbcType=TIMESTAMP},
+      expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      owner_code = #{ownerCode,jdbcType=VARCHAR},
+      inventory_type = #{inventoryType,jdbcType=CHAR},
+      inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      sales_price = #{salesPrice,jdbcType=DECIMAL},
+      tax_rate = #{taxRate,jdbcType=DECIMAL},
+      sales_money = #{salesMoney,jdbcType=DECIMAL},
+      source_no = #{sourceNo,jdbcType=VARCHAR},
+      source_line = #{sourceLine,jdbcType=SMALLINT},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="products_extendid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="qty" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="warehouse_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="batch_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="product_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="expiry_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="shelflife_day" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="order_items_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="owner_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="inventory_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="inventory_status" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="sales_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="tax_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="sales_money" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="source_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="source_line" javaType="java.lang.Short" jdbcType="SMALLINT" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, tenant_id, line, products_extendid, qty, warehouse_no, batch_code, 
+    product_time, expiry_time, shelflife_day, order_items_remark, owner_code, inventory_type, 
+    inventory_status, sales_price, tax_rate, sales_money, source_no, source_line, cre_person_id, 
+    cre_person, cre_time, mod_person_id, mod_person, mod_time, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_order_items
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items (id, order_no, tenant_id, 
+      line, products_extendid, qty, 
+      warehouse_no, batch_code, product_time, 
+      expiry_time, shelflife_day, order_items_remark, 
+      owner_code, inventory_type, inventory_status, 
+      sales_price, tax_rate, sales_money, 
+      source_no, source_line, cre_person_id, 
+      cre_person, cre_time, mod_person_id, 
+      mod_person, mod_time, version
+      )
+    values (#{id,jdbcType=BIGINT}, #{orderNo,jdbcType=VARCHAR}, #{tenantId,jdbcType=BIGINT}, 
+      #{line,jdbcType=SMALLINT}, #{productsExtendid,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, 
+      #{warehouseNo,jdbcType=VARCHAR}, #{batchCode,jdbcType=VARCHAR}, #{productTime,jdbcType=TIMESTAMP}, 
+      #{expiryTime,jdbcType=TIMESTAMP}, #{shelflifeDay,jdbcType=SMALLINT}, #{orderItemsRemark,jdbcType=VARCHAR}, 
+      #{ownerCode,jdbcType=VARCHAR}, #{inventoryType,jdbcType=CHAR}, #{inventoryStatus,jdbcType=CHAR}, 
+      #{salesPrice,jdbcType=DECIMAL}, #{taxRate,jdbcType=DECIMAL}, #{salesMoney,jdbcType=DECIMAL}, 
+      #{sourceNo,jdbcType=VARCHAR}, #{sourceLine,jdbcType=SMALLINT}, #{crePersonId,jdbcType=VARCHAR}, 
+      #{crePerson,jdbcType=VARCHAR}, #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, 
+      #{modPerson,jdbcType=VARCHAR}, #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    insert into erp_jindie_order_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="line != null">
+        line,
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid,
+      </if>
+      <if test="qty != null">
+        qty,
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no,
+      </if>
+      <if test="batchCode != null">
+        batch_code,
+      </if>
+      <if test="productTime != null">
+        product_time,
+      </if>
+      <if test="expiryTime != null">
+        expiry_time,
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day,
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark,
+      </if>
+      <if test="ownerCode != null">
+        owner_code,
+      </if>
+      <if test="inventoryType != null">
+        inventory_type,
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="taxRate != null">
+        tax_rate,
+      </if>
+      <if test="salesMoney != null">
+        sales_money,
+      </if>
+      <if test="sourceNo != null">
+        source_no,
+      </if>
+      <if test="sourceLine != null">
+        source_line,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="line != null">
+        line = #{line,jdbcType=SMALLINT},
+      </if>
+      <if test="productsExtendid != null">
+        products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        qty = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseNo != null">
+        warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null">
+        batch_code = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="productTime != null">
+        product_time = #{productTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null">
+        expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shelflifeDay != null">
+        shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      </if>
+      <if test="orderItemsRemark != null">
+        order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerCode != null">
+        owner_code = #{ownerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryType != null">
+        inventory_type = #{inventoryType,jdbcType=CHAR},
+      </if>
+      <if test="inventoryStatus != null">
+        inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      </if>
+      <if test="salesPrice != null">
+        sales_price = #{salesPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null">
+        tax_rate = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="salesMoney != null">
+        sales_money = #{salesMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="sourceNo != null">
+        source_no = #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null">
+        source_line = #{sourceLine,jdbcType=SMALLINT},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieOrderItemsEntity">
+    update erp_jindie_order_items
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=BIGINT},
+      line = #{line,jdbcType=SMALLINT},
+      products_extendid = #{productsExtendid,jdbcType=VARCHAR},
+      qty = #{qty,jdbcType=DECIMAL},
+      warehouse_no = #{warehouseNo,jdbcType=VARCHAR},
+      batch_code = #{batchCode,jdbcType=VARCHAR},
+      product_time = #{productTime,jdbcType=TIMESTAMP},
+      expiry_time = #{expiryTime,jdbcType=TIMESTAMP},
+      shelflife_day = #{shelflifeDay,jdbcType=SMALLINT},
+      order_items_remark = #{orderItemsRemark,jdbcType=VARCHAR},
+      owner_code = #{ownerCode,jdbcType=VARCHAR},
+      inventory_type = #{inventoryType,jdbcType=CHAR},
+      inventory_status = #{inventoryStatus,jdbcType=CHAR},
+      sales_price = #{salesPrice,jdbcType=DECIMAL},
+      tax_rate = #{taxRate,jdbcType=DECIMAL},
+      sales_money = #{salesMoney,jdbcType=DECIMAL},
+      source_no = #{sourceNo,jdbcType=VARCHAR},
+      source_line = #{sourceLine,jdbcType=SMALLINT},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,1480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuyescm.erp.mapper.ErpJindieAsnEntityMapper">
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="asn_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="asn_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="asn_cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="cre_asn_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reference_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="supplier_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="work_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tenant_id, asn_no, asn_type, asn_time, asn_cre_time, cre_asn_person, reference_no, 
+    asn_remark, supplier_no, cre_person_id, cre_person, cre_time, mod_person_id, mod_person, 
+    mod_time, version, work_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn (id, tenant_id, asn_no, 
+      asn_type, asn_time, asn_cre_time, 
+      cre_asn_person, reference_no, asn_remark, 
+      supplier_no, cre_person_id, cre_person, 
+      cre_time, mod_person_id, mod_person, 
+      mod_time, version, work_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{tenantId,jdbcType=BIGINT}, #{asnNo,jdbcType=VARCHAR}, 
+      #{asnType,jdbcType=CHAR}, #{asnTime,jdbcType=TIMESTAMP}, #{asnCreTime,jdbcType=TIMESTAMP}, 
+      #{creAsnPerson,jdbcType=VARCHAR}, #{referenceNo,jdbcType=VARCHAR}, #{asnRemark,jdbcType=VARCHAR}, 
+      #{supplierNo,jdbcType=VARCHAR}, #{crePersonId,jdbcType=VARCHAR}, #{crePerson,jdbcType=VARCHAR}, 
+      #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, #{modPerson,jdbcType=VARCHAR}, 
+      #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{workTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="asnNo != null">
+        asn_no,
+      </if>
+      <if test="asnType != null">
+        asn_type,
+      </if>
+      <if test="asnTime != null">
+        asn_time,
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time,
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person,
+      </if>
+      <if test="referenceNo != null">
+        reference_no,
+      </if>
+      <if test="asnRemark != null">
+        asn_remark,
+      </if>
+      <if test="supplierNo != null">
+        supplier_no,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        asn_no = #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        asn_type = #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        reference_no = #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    set tenant_id = #{tenantId,jdbcType=BIGINT},
+      asn_no = #{asnNo,jdbcType=VARCHAR},
+      asn_type = #{asnType,jdbcType=CHAR},
+      asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      reference_no = #{referenceNo,jdbcType=VARCHAR},
+      asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      work_time = #{workTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="asn_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="asn_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="asn_cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="cre_asn_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reference_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="supplier_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="work_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tenant_id, asn_no, asn_type, asn_time, asn_cre_time, cre_asn_person, reference_no, 
+    asn_remark, supplier_no, cre_person_id, cre_person, cre_time, mod_person_id, mod_person, 
+    mod_time, version, work_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn (id, tenant_id, asn_no, 
+      asn_type, asn_time, asn_cre_time, 
+      cre_asn_person, reference_no, asn_remark, 
+      supplier_no, cre_person_id, cre_person, 
+      cre_time, mod_person_id, mod_person, 
+      mod_time, version, work_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{tenantId,jdbcType=BIGINT}, #{asnNo,jdbcType=VARCHAR}, 
+      #{asnType,jdbcType=CHAR}, #{asnTime,jdbcType=TIMESTAMP}, #{asnCreTime,jdbcType=TIMESTAMP}, 
+      #{creAsnPerson,jdbcType=VARCHAR}, #{referenceNo,jdbcType=VARCHAR}, #{asnRemark,jdbcType=VARCHAR}, 
+      #{supplierNo,jdbcType=VARCHAR}, #{crePersonId,jdbcType=VARCHAR}, #{crePerson,jdbcType=VARCHAR}, 
+      #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, #{modPerson,jdbcType=VARCHAR}, 
+      #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{workTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="asnNo != null">
+        asn_no,
+      </if>
+      <if test="asnType != null">
+        asn_type,
+      </if>
+      <if test="asnTime != null">
+        asn_time,
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time,
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person,
+      </if>
+      <if test="referenceNo != null">
+        reference_no,
+      </if>
+      <if test="asnRemark != null">
+        asn_remark,
+      </if>
+      <if test="supplierNo != null">
+        supplier_no,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        asn_no = #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        asn_type = #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        reference_no = #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    set tenant_id = #{tenantId,jdbcType=BIGINT},
+      asn_no = #{asnNo,jdbcType=VARCHAR},
+      asn_type = #{asnType,jdbcType=CHAR},
+      asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      reference_no = #{referenceNo,jdbcType=VARCHAR},
+      asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      work_time = #{workTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="asn_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="asn_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="asn_cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="cre_asn_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reference_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="supplier_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="work_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tenant_id, asn_no, asn_type, asn_time, asn_cre_time, cre_asn_person, reference_no, 
+    asn_remark, supplier_no, cre_person_id, cre_person, cre_time, mod_person_id, mod_person, 
+    mod_time, version, work_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn (id, tenant_id, asn_no, 
+      asn_type, asn_time, asn_cre_time, 
+      cre_asn_person, reference_no, asn_remark, 
+      supplier_no, cre_person_id, cre_person, 
+      cre_time, mod_person_id, mod_person, 
+      mod_time, version, work_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{tenantId,jdbcType=BIGINT}, #{asnNo,jdbcType=VARCHAR}, 
+      #{asnType,jdbcType=CHAR}, #{asnTime,jdbcType=TIMESTAMP}, #{asnCreTime,jdbcType=TIMESTAMP}, 
+      #{creAsnPerson,jdbcType=VARCHAR}, #{referenceNo,jdbcType=VARCHAR}, #{asnRemark,jdbcType=VARCHAR}, 
+      #{supplierNo,jdbcType=VARCHAR}, #{crePersonId,jdbcType=VARCHAR}, #{crePerson,jdbcType=VARCHAR}, 
+      #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, #{modPerson,jdbcType=VARCHAR}, 
+      #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{workTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="asnNo != null">
+        asn_no,
+      </if>
+      <if test="asnType != null">
+        asn_type,
+      </if>
+      <if test="asnTime != null">
+        asn_time,
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time,
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person,
+      </if>
+      <if test="referenceNo != null">
+        reference_no,
+      </if>
+      <if test="asnRemark != null">
+        asn_remark,
+      </if>
+      <if test="supplierNo != null">
+        supplier_no,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        asn_no = #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        asn_type = #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        reference_no = #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    set tenant_id = #{tenantId,jdbcType=BIGINT},
+      asn_no = #{asnNo,jdbcType=VARCHAR},
+      asn_type = #{asnType,jdbcType=CHAR},
+      asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      reference_no = #{referenceNo,jdbcType=VARCHAR},
+      asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      work_time = #{workTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="asn_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="asn_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="asn_cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="cre_asn_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reference_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="supplier_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="work_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tenant_id, asn_no, asn_type, asn_time, asn_cre_time, cre_asn_person, reference_no, 
+    asn_remark, supplier_no, cre_person_id, cre_person, cre_time, mod_person_id, mod_person, 
+    mod_time, version, work_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn (id, tenant_id, asn_no, 
+      asn_type, asn_time, asn_cre_time, 
+      cre_asn_person, reference_no, asn_remark, 
+      supplier_no, cre_person_id, cre_person, 
+      cre_time, mod_person_id, mod_person, 
+      mod_time, version, work_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{tenantId,jdbcType=BIGINT}, #{asnNo,jdbcType=VARCHAR}, 
+      #{asnType,jdbcType=CHAR}, #{asnTime,jdbcType=TIMESTAMP}, #{asnCreTime,jdbcType=TIMESTAMP}, 
+      #{creAsnPerson,jdbcType=VARCHAR}, #{referenceNo,jdbcType=VARCHAR}, #{asnRemark,jdbcType=VARCHAR}, 
+      #{supplierNo,jdbcType=VARCHAR}, #{crePersonId,jdbcType=VARCHAR}, #{crePerson,jdbcType=VARCHAR}, 
+      #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, #{modPerson,jdbcType=VARCHAR}, 
+      #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{workTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="asnNo != null">
+        asn_no,
+      </if>
+      <if test="asnType != null">
+        asn_type,
+      </if>
+      <if test="asnTime != null">
+        asn_time,
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time,
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person,
+      </if>
+      <if test="referenceNo != null">
+        reference_no,
+      </if>
+      <if test="asnRemark != null">
+        asn_remark,
+      </if>
+      <if test="supplierNo != null">
+        supplier_no,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        asn_no = #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        asn_type = #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        reference_no = #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    set tenant_id = #{tenantId,jdbcType=BIGINT},
+      asn_no = #{asnNo,jdbcType=VARCHAR},
+      asn_type = #{asnType,jdbcType=CHAR},
+      asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      reference_no = #{referenceNo,jdbcType=VARCHAR},
+      asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      work_time = #{workTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="asn_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="asn_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="asn_cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="cre_asn_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reference_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="supplier_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="work_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tenant_id, asn_no, asn_type, asn_time, asn_cre_time, cre_asn_person, reference_no, 
+    asn_remark, supplier_no, cre_person_id, cre_person, cre_time, mod_person_id, mod_person, 
+    mod_time, version, work_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn (id, tenant_id, asn_no, 
+      asn_type, asn_time, asn_cre_time, 
+      cre_asn_person, reference_no, asn_remark, 
+      supplier_no, cre_person_id, cre_person, 
+      cre_time, mod_person_id, mod_person, 
+      mod_time, version, work_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{tenantId,jdbcType=BIGINT}, #{asnNo,jdbcType=VARCHAR}, 
+      #{asnType,jdbcType=CHAR}, #{asnTime,jdbcType=TIMESTAMP}, #{asnCreTime,jdbcType=TIMESTAMP}, 
+      #{creAsnPerson,jdbcType=VARCHAR}, #{referenceNo,jdbcType=VARCHAR}, #{asnRemark,jdbcType=VARCHAR}, 
+      #{supplierNo,jdbcType=VARCHAR}, #{crePersonId,jdbcType=VARCHAR}, #{crePerson,jdbcType=VARCHAR}, 
+      #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, #{modPerson,jdbcType=VARCHAR}, 
+      #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{workTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="asnNo != null">
+        asn_no,
+      </if>
+      <if test="asnType != null">
+        asn_type,
+      </if>
+      <if test="asnTime != null">
+        asn_time,
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time,
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person,
+      </if>
+      <if test="referenceNo != null">
+        reference_no,
+      </if>
+      <if test="asnRemark != null">
+        asn_remark,
+      </if>
+      <if test="supplierNo != null">
+        supplier_no,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        asn_no = #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        asn_type = #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        reference_no = #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    set tenant_id = #{tenantId,jdbcType=BIGINT},
+      asn_no = #{asnNo,jdbcType=VARCHAR},
+      asn_type = #{asnType,jdbcType=CHAR},
+      asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      reference_no = #{referenceNo,jdbcType=VARCHAR},
+      asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      work_time = #{workTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tenant_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="asn_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_type" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="asn_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="asn_cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="cre_asn_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reference_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="asn_remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="supplier_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cre_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="mod_person_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_person" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mod_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="version" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="work_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tenant_id, asn_no, asn_type, asn_time, asn_cre_time, cre_asn_person, reference_no, 
+    asn_remark, supplier_no, cre_person_id, cre_person, cre_time, mod_person_id, mod_person, 
+    mod_time, version, work_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from erp_jindie_asn
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn (id, tenant_id, asn_no, 
+      asn_type, asn_time, asn_cre_time, 
+      cre_asn_person, reference_no, asn_remark, 
+      supplier_no, cre_person_id, cre_person, 
+      cre_time, mod_person_id, mod_person, 
+      mod_time, version, work_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{tenantId,jdbcType=BIGINT}, #{asnNo,jdbcType=VARCHAR}, 
+      #{asnType,jdbcType=CHAR}, #{asnTime,jdbcType=TIMESTAMP}, #{asnCreTime,jdbcType=TIMESTAMP}, 
+      #{creAsnPerson,jdbcType=VARCHAR}, #{referenceNo,jdbcType=VARCHAR}, #{asnRemark,jdbcType=VARCHAR}, 
+      #{supplierNo,jdbcType=VARCHAR}, #{crePersonId,jdbcType=VARCHAR}, #{crePerson,jdbcType=VARCHAR}, 
+      #{creTime,jdbcType=TIMESTAMP}, #{modPersonId,jdbcType=VARCHAR}, #{modPerson,jdbcType=VARCHAR}, 
+      #{modTime,jdbcType=TIMESTAMP}, #{version,jdbcType=BIGINT}, #{workTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    insert into erp_jindie_asn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="asnNo != null">
+        asn_no,
+      </if>
+      <if test="asnType != null">
+        asn_type,
+      </if>
+      <if test="asnTime != null">
+        asn_time,
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time,
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person,
+      </if>
+      <if test="referenceNo != null">
+        reference_no,
+      </if>
+      <if test="asnRemark != null">
+        asn_remark,
+      </if>
+      <if test="supplierNo != null">
+        supplier_no,
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id,
+      </if>
+      <if test="crePerson != null">
+        cre_person,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id,
+      </if>
+      <if test="modPerson != null">
+        mod_person,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=BIGINT},
+      </if>
+      <if test="asnNo != null">
+        asn_no = #{asnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnType != null">
+        asn_type = #{asnType,jdbcType=CHAR},
+      </if>
+      <if test="asnTime != null">
+        asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="asnCreTime != null">
+        asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creAsnPerson != null">
+        cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceNo != null">
+        reference_no = #{referenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="asnRemark != null">
+        asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="crePersonId != null">
+        cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="crePerson != null">
+        cre_person = #{crePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modPersonId != null">
+        mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      </if>
+      <if test="modPerson != null">
+        mod_person = #{modPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiuyescm.erp.entity.ErpJindieAsnEntity">
+    update erp_jindie_asn
+    set tenant_id = #{tenantId,jdbcType=BIGINT},
+      asn_no = #{asnNo,jdbcType=VARCHAR},
+      asn_type = #{asnType,jdbcType=CHAR},
+      asn_time = #{asnTime,jdbcType=TIMESTAMP},
+      asn_cre_time = #{asnCreTime,jdbcType=TIMESTAMP},
+      cre_asn_person = #{creAsnPerson,jdbcType=VARCHAR},
+      reference_no = #{referenceNo,jdbcType=VARCHAR},
+      asn_remark = #{asnRemark,jdbcType=VARCHAR},
+      supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      cre_person_id = #{crePersonId,jdbcType=VARCHAR},
+      cre_person = #{crePerson,jdbcType=VARCHAR},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      mod_person_id = #{modPersonId,jdbcType=VARCHAR},
+      mod_person = #{modPerson,jdbcType=VARCHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      work_time = #{workTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
